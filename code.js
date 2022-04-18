@@ -21,28 +21,25 @@ function blastoff() {
             }
             //updates currTime
             currTime = currTime - 5;
-        }, i * 5000);
-    };
-};
-
+        }, i * 5000)
+    }
+}
 
 function start(){
-
     console.log("start() method started");
     document.getElementById("data").rows["seconds"].innerHTML = "Reading Data";
     index = 0;
     timer = setInterval(updateDisplay, time_interval);
     document.getElementById("startbutton").disabled = true;
     document.getElementById("stopbutton").disabled = false;
-};
+}
 
 function stop(){
     console.log("stop() method started");
     clearInterval(timer);
     document.getElementById("stopbutton").disabled = true;
     document.getElementById("startbutton").disabled = false;
-
-};
+}
 
 // This is the win counter. As you win, it will go up by one.
 var wins = 0;
@@ -111,37 +108,35 @@ function play() {
         document.getElementById("Win").innerHTML = "Push - try again";
         // This updates the screen on push counters on how many times they got push. 
         document.getElementById("push count").innerHTML = "Pushes: " + pushes;
-
-    };
-
-};
-
-function sound(srcFile){
-    this.sound = document.createElement("audio");
-    this.sound.src = srcFile;
-    //this.sound.setAttribute("preload", "audio");
-    //this.sound.setAttribute("controls", "none");
-    //this.sound.style.display = "none";
-    //document.body.appendChild(this.sound);
-    this.play = function() {
-        this.sound.play();
-    }
-    this.stop = function() {
-        this.sound.pause();
     }
 }
 
-function playStation(){
+function playStation() {
     console.log("playStation() started");
     mySound = new sound("us-lab-background.mp3");
     mySound.play();
+    setTimeout(function(){
+        mySound.stop();
+    }, 7500);
 }
 
 function playOddity(){
     console.log("playOddity() started");
-    mySound = new sound("David_Bowie_Space_Oddity.mp3");
-    mySound.play();
-    setTimeout(function(){
-        mySound.stop();
-    }, 30000);
+    bowieSound = new sound("David_Bowie_Space_Oddity.mp3");
+    bowieSound.play();
+}
+
+function sound(srcFile){
+    this.sound = document.createElement("audio");
+    this.sound.src = srcFile;
+    this.sound.setAttribute("preload", "audio");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
 }

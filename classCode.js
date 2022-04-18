@@ -1,31 +1,28 @@
-class Rocket{
-    //name properties first
+class Rocket {
+    //make the properties
     constructor(
         fuelType,
         weight,
         power
-    ){
+    ) {
         this.fuelType = fuelType;
         this.weight = weight;
         this.power = power;
     }
-
     launch(){
-        console.log("launch sequence started");
-        alert("Warning! Launch sequence started");
-        return true;
+        console.log("lauch sequence started");
+        alert("Clear the launch area, launch is about to start");
+        alert("lauch sequence started");
     }
 
-    refuel(){
-        console.log("Refueling process started");
-        alert("Refueling process started");
-        return true;
+    landing(){
+        console.log("landing sequence started");
+        alert("landing sequence started");
     }
 
-    detachTruster(thrusterID){
-        console.log("detachTruster sequence started");
-        alert("Thruster " + this.thrusterID + " has been successfully detacted");
-        return true;
+    detachThruster(){
+        console.log("detach Thruster sequence started");
+        alert("detach Thruster sequence started");
     }
 }
 
@@ -48,33 +45,36 @@ class Mission{
         this.numOfAstronauts = numOfAstronauts;
     }
 
+    launchMission(){
+        console.log("launchMission");
+        alert("launch sequence started, Best of luck to the crew of the " 
+            + this.spaceCraft);
+    }
+
     displayMissionParameters(){
-        alert("the spacecraft " + this.spaceCraft + " will launch on " + this.launchDateDay + " of " + this.launchDateMonth + " " + this.launchDateYear + 
-            " with an O2 level of " + this.oxyLvl + "%");
-    }
-
-    launch(){
-        console.log("launch sequence started");
-        alert("launch sequence started");
+        console.log("displayMissionParameters() started");
+        alert("The spacecraft, " + this.spaceCraft + ", will launch on " + this.launchDateDay 
+            + " of " + this.launchDateMonth + " " + this.launchDateYear + " with an O2 level of " + 
+            this.oxyLvl + "%");
     }
 }
 
-function launchFall(){
-    console.log("launchFall() started");
-    fallLaunch.launch();
+function runSpDisplay(){
+    console.log("runSpDisplay() started");
+    springLaunch.displayMissionParameters();
 }
 
-function displayFall(){
-    console.log("displayFall() started");
+function spLaunch(){
+    console.log("spLaunch() started");
+    springLaunch.launchMission();
+}
+
+function runFallDisplay(){
+    console.log("runFallDisplay() started");
     fallLaunch.displayMissionParameters();
 }
 
-function launchSpring(){
-    console.log("launchSpring() started");
-    springLaunch.launch();
-}
-
-function displaySpring(){
-    console.log("displaySpring() started");
-    springLaunch.displayMissionParameters();
+function faLaunch(){
+    console.log("faLaunch() started");
+    fallLaunch.launchMission();
 }

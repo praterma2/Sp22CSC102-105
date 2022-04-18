@@ -1,42 +1,34 @@
 <!DOCTYPE html>
-
 <html>
-
 <!--
     UAT Space Page.html - used to test out tags in html
-    matt prater
-    mprater@uat.edu
 -->
 
 <head>
-
-    <Title>
+    <title>
         Prof Prater's UAT Space Page
-    </Title>
-
-    <link rel="stylesheet" href="Style.css">
+    </title>
+    <link rel="stylesheet" href="style.css">
     <script src="code.js"> </script>
-    <script src="classCode.js"> </script>
-    <script src="loginCode.js"></script>
+    <script src="classCode.js"></script>
     <script src="launchDataDis.js"></script>
     <script src="dataLoader.js"></script>
-
-    <!--variables needed for changing the launch data display-->
     <script>
         var theTime = new Date();
         var tempTime = new Date();
+        var lastIteration = 0;
         var time_interval = 5000;
-        var last_iteration = 0;
         var running = true;
         var index = 0;
         var timer;
 
+        //gets data into the array
         var data = getData();
+
     </script>
-    
 </head>
 
-<Body>
+<body>
     <table>
         <td>
             <img src=UATSpaceLogo-1.jpg>
@@ -64,37 +56,35 @@
             <tr id="seconds"></tr>
             <tr id="latitude"></tr>
             <tr id="longitude"></tr>
-            <tr id="GPSALT"></tr>
-            <tr id="BMPALT"></tr>
-            <tr id="BMPPRESS"></tr>
-            <tr id="BMPTEMP"></tr>
-            <tr id="DIGTEMP"></tr>
-            <tr id="CSSTEMP"></tr>
-            <tr id="CSSCO2"></tr>
-            <tr id="CSSTVOC"></tr>
+            <tr id="gpsSensor_alt"></tr>
+            <tr id="bmpSensor_alt"></tr>
+            <tr id="bmpSensor_pres"></tr>
+            <tr id="bmpSensor_temp"></tr>
+            <tr id="digSensor_temp"></tr>
+            <tr id="cssSensor_temp"></tr>
+            <tr id="cssSensor_eCO2"></tr>
+            <tr id="cssSensor_TVOC"></tr>
             <tr id="UV"></tr>
-            <tr id="ACCELX"></tr>
-            <tr id="ACCELY"></tr>
-            <tr id="ACCELZ"></tr>
-            <tr id="MAGX"></tr>
-            <tr id="MAGY"></tr>
-            <tr id="MAGZ"></tr>
-            <tr id="GYROX"></tr>
-            <tr id="GYROY"></tr>
-            <tr id="GYROZ"></tr>
+            <tr id="accelX"></tr>
+            <tr id="accelY"></tr>
+            <tr id="accelZ"></tr>
+            <tr id="magneticX"></tr>
+            <tr id="magneticY"></tr>
+            <tr id="magneticZ"></tr>
+            <tr id="gyroX"></tr>
+            <tr id="gyroY"></tr>
+            <tr id="gyroZ"></tr>
         </tbody>
     </table>
     <br>
-    The current time is: <div id="clockTime">Press start for current time</div>
+    The current time is: <div id="timeStamp">Press start for current time</div><br>
     <br>
     <button id="startbutton" onclick="start();" class="button">
         Start
     </button>
-
     <button id="stopbutton" onclick="stop();" class="button">
         Stop
     </button>
-    <br>
     <br>
     <br>
     <div id="blink">
@@ -105,26 +95,17 @@
         setInterval(function () {
             blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
         }, 250);
+
     </script>
+
     <br>
     <!--
     This is the button that allows the function to start. When clicked it will start the play()
     function in Java script, which will play craps.
     -->
-    <button onclick="play()" class="button">
-
-        Play
-
-    </button>
-
-    <button onclick="reset()" class="button">
-
-        Reset
-
-    </button>
-
+    <button onclick="play()" class="button">Play</button>
+    <button onclick="reset()" class="button">Reset</button>
     <br>
-
     <br>
     <!--
         The following are the locations of the results. 
@@ -165,25 +146,27 @@
     </div>
     <br>
     <br>
-    <button class="lgButton" onclick="playStation();">Play Space Station Sounds</button>
+    <button class="lgButton" onclick="playStation();">Play space Station sounds</button>
     <br>
-    <button class="lgButton" onclick="playOddity();">Play David Bowie</button>
+    <button class="lgButton" onclick="playOddity();">Play a space oddity</button>
+    <br>
     <br>
     <script>
-        var springLaunch = new Mission("To boldly go...", 19, 17, "March", 2022, "Fiona", 3);
-        var fallLaunch = new Mission("To go twice", 25, 13, "November", 2023, "Polaris", 2);
+        var springLaunch = new Mission("To boldly go...", 19, 25, "May", 2023, "Fiona", 3);
+        var fallLaunch = new Mission("To go again", 25, 13, "November", 2022, "Polaris", 2);
     </script>
+    <button onclick="runSpDisplay()" class="lgButton">Spring mission parameters</button>
+    <button onclick="spLaunch()" class="button">Start Spring Launch</button>
     <br>
-    <button class="button" onclick="launchFall()">Launch Fall</button>
-    <button class="button" onclick="displayFall()">displayFall</button>
-    <br>
-    <br>
-    <button class="lgButton" onclick="launchSpring()">Launch Spring</button>
-    <button class="button" onclick="displaySpring()">display Spring</button>
+    <button onclick="runFallDisplay()" class="lgButton">Fall mission parameters</button>
+    <button onclick="faLaunch()" class="button">Start Fall Launch</button>
     <br>
     <br>
-    <h3>&lt; <a href="./index.html">The Landing Page</a> | <a href="./contact.html">Contact Page</a> | <a href="./boards.html">The Boards Page</a> &gt;
-    </h3>
-</Body>
+    &lt;
+    <a href="./index.html">My Landing Page</a> |
+    <a href="./contact.html">Contact Page</a> |
+    <a href="./boards.html">My Boards Page</a>
+    &gt;
+</body>
 
 </html>
